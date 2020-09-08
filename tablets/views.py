@@ -6,7 +6,12 @@ from .forms import DeleteTabletForm, CreateBrandForm
 
 
 def tablets_list(request):
-    french_brand = Brand.objects.filter(country='FR')
+    """
+        Function to display tablet's lists
+        french_tablets ==> All French-brand tablets released between 2015 and 2020
+        others ==> All others tablets
+    """
+    french_brand = Brand.objects.filter(country='FR')  # Select all french brands
     french_tablets = Tablets.objects.filter(brand__in=french_brand, release_year__gte=2015)
     others = Tablets.objects.exclude(id__in=french_tablets)
     form = DeleteTabletForm
@@ -14,6 +19,10 @@ def tablets_list(request):
 
 
 class TabletsDelete(DeleteView):
+    """
+    Class to delete a tablet
+    """
+
     model = Tablets
 
     def get_object(self):
@@ -25,6 +34,9 @@ class TabletsDelete(DeleteView):
 
 
 class BrandCreate(CreateView):
+    """
+        Class to create a new brand
+    """
     model = Brand
     form_class = CreateBrandForm
     template_name = 'tablets/newBrand.html'
@@ -32,6 +44,9 @@ class BrandCreate(CreateView):
 
 
 class TabletUpdate(UpdateView):
+    """
+    Class to update tablet's information
+    """
     model = Tablets
     template_name = 'tablets/update.html'
     fields = '__all__'
@@ -39,6 +54,10 @@ class TabletUpdate(UpdateView):
 
 
 class TabletCreate(CreateView):
+    """
+    Class to create a new tablet
+    """
+
     model = Tablets
     template_name = 'tablets/newTablet.html'
     fields = '__all__'
@@ -46,6 +65,10 @@ class TabletCreate(CreateView):
 
 
 class TabletDetail(DetailView):
+    """
+    Class to display the details of a tablet
+    """
+
     context_object_name = "tablet"
     model = Tablets
     template_name = "tablets/detailTablet.html"
