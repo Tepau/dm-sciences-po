@@ -1,0 +1,18 @@
+{% extends 'tablets/baseForm.html' %}
+
+{% block title %}New Brand Form{% endblock %}
+
+{% block titleForm %}Create a new Brand{% endblock %}
+
+{% block form %}
+
+{% load crispy_forms_tags %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.name|as_crispy_field }}
+    {{ form.founder|as_crispy_field }}
+    {{ form.country|as_crispy_field }}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+{% endblock %}

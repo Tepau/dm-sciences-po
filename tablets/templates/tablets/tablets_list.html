@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tablets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    {% load static %}
+    <link href="{% static 'tablets/css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-12 text-center mb-4">
+                <h3>Tablet's List</h3>
+            </div>
+            <div class="col-md-12 mb-4">
+                <a role="button" class="btn btn-primary" href="{% url 'newTablet' %}">Add New Tablet</a>
+                <a role="button" class="btn btn-success" href="{% url 'new' %}">Add New Brand</a>
+            </div>
+            {% if french_tablets|length > 0 %}
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <caption>French tablets released between 2015 and 2020</caption>
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for tablet in french_tablets %}
+                        <tr>
+                            <td class="d-flex justify-content-between">
+                                <a href="{% url 'detailTablet' tablet.pk %}">{{ tablet.name|capfirst }}</a>
+                                <div class="d-flex">
+                                    <a href="{% url 'updateTablet' tablet.pk %}"><i class="far fa-edit fa-2x mr-2"></i></a>
+                                    <form method="post" action="{% url 'delete' tablet.id  %}">
+                                        {% csrf_token %}
+                                        <button class="trash"  type="submit"><i class="fas fa-trash fa-2x"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+            {% if others|length > 0 %}
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <caption>Others Tablets</caption>
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for tablet in others %}
+                        <tr>
+                            <td class="d-flex justify-content-between">
+                                <a href="{% url 'detailTablet' tablet.pk %}">{{ tablet.name|capfirst }}</a>
+                                <div class="d-flex">
+                                    <a href="{% url 'updateTablet' tablet.pk %}"><i class="far fa-edit fa-2x mr-2"></i></a>
+                                    <form method="post" action="{% url 'delete' tablet.id  %}">
+                                        {% csrf_token %}
+                                        <button class="trash"  type="submit"><i class="fas fa-trash fa-2x"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+</body>
+</html>

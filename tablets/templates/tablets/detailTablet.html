@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablet's Detail</title>
+    {% load static %}
+    <link href="{% static 'tablets/css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <table class="my-table">
+                    <caption class="my-caption">Caracteristics of product {{ tablet.name|capfirst }}</caption>
+                    <tbody>
+                        <tr>
+                            <td class="my-td">Name</td>
+                            <td class="my-td">{{ tablet.name|capfirst }}</td>
+                        </tr>
+                        <tr>
+                            <td class="my-td">Brand</td>
+                            <td class="my-td">{{ tablet.brand|capfirst }}</td>
+                        </tr>
+                        <tr>
+                            <td class="my-td">Storage</td>
+                            <td class="my-td">{{ tablet.storage_size|capfirst }}</td>
+                        </tr>
+                        <tr>
+                            <td class="my-td">Released Year</td>
+                            <td class="my-td">{{ tablet.release_year }}</td>
+                        </tr>
+                        <tr>
+                            <td class="my-td">Brand's Founder</td>
+                            <td class="my-td">{{ tablet.brand.founder|capfirst }}</td>
+                        </tr>
+                        <tr>
+                            <td class="my-td">Brand's Country</td>
+                            <td class="my-td">{{ tablet.brand.country.name|capfirst }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
