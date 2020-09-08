@@ -18,3 +18,11 @@
     border: none;
     background-color: transparent;
 }
+
+.tablet-name {
+    color: black;
+}
+
+.tablet-name:hover {
+    text-decoration:none;
+}

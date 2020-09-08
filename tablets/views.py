@@ -10,7 +10,7 @@ def tablets_list(request):
     french_tablets = Tablets.objects.filter(brand__in=french_brand, release_year__gte=2015)
     others = Tablets.objects.exclude(id__in=french_tablets)
     form = DeleteTabletForm
-    return render(request, 'tablets/tablets_list.html', locals())
+    return render(request, 'tablets/tabletsList.html', locals())
 
 
 class TabletsDelete(DeleteView):

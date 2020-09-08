@@ -31,7 +31,7 @@
                         {% for tablet in french_tablets %}
                         <tr>
                             <td class="d-flex justify-content-between">
-                                <a href="{% url 'detailTablet' tablet.pk %}">{{ tablet.name|capfirst }}</a>
+                                <a class="tablet-name" href="{% url 'detailTablet' tablet.pk %}">{{ tablet.name|capfirst }}</a>
                                 <div class="d-flex">
                                     <a href="{% url 'updateTablet' tablet.pk %}"><i class="far fa-edit fa-2x mr-2"></i></a>
                                     <form method="post" action="{% url 'delete' tablet.id  %}">
@@ -60,7 +60,7 @@
                         {% for tablet in others %}
                         <tr>
                             <td class="d-flex justify-content-between">
-                                <a href="{% url 'detailTablet' tablet.pk %}">{{ tablet.name|capfirst }}</a>
+                                <a class="tablet-name" href="{% url 'detailTablet' tablet.pk %}">{{ tablet.name|capfirst }}</a>
                                 <div class="d-flex">
                                     <a href="{% url 'updateTablet' tablet.pk %}"><i class="far fa-edit fa-2x mr-2"></i></a>
                                     <form method="post" action="{% url 'delete' tablet.id  %}">
