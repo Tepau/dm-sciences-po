@@ -16,10 +16,8 @@ Project carried out for a job interview in **SciencesPo**
  - `cd dm-sciences-po`
  - `pip install -r requirements.txt`
 
-### Create the migration file and launch migrations
+### Launch migrations
 
- - `cd projet_dm`
- - `python manage.py makemigrations`
  - `python manage.py migrate`
 
 ### Upload data
